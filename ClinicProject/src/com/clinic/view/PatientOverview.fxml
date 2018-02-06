@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainWindow" layoutX="20.0" layoutY="20.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.clinic.view.PatientOverviewController">
+   <children>
+      <VBox layoutX="20.0" layoutY="20.0" prefHeight="670.0" prefWidth="1102.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="47.0" prefWidth="1102.0">
+               <children>
+                  <Label prefHeight="39.0" prefWidth="268.0" text="Clinic - Patient Detail" textFill="#57b939" textOverrun="CLIP">
+                     <font>
+                        <Font name="Calibri Bold" size="19.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="43.0" prefWidth="124.0" text="Search By:">
+                     <font>
+                        <Font name="Calibri" size="23.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="filterField" alignment="TOP_LEFT" onKeyTyped="#handleSearchPatient" prefHeight="45.0" prefWidth="217.0" promptText="&lt;Type the text to search&gt;">
+                     <font>
+                        <Font name="Calibri" size="15.0" />
+                     </font></TextField>
+                  <Button fx:id="btnExit" cancelButton="true" mnemonicParsing="false" onAction="#handleExit" text="Exit">
+                     <HBox.margin>
+                        <Insets left="420.0" top="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <TableView fx:id="patientTable" cache="true" cacheHint="SPEED" editable="true" onKeyReleased="#handleMouseClick" onMouseClicked="#handleMouseClick" prefHeight="330.0" prefWidth="1102.0" tableMenuButtonVisible="true">
+              <columns>
+                <TableColumn fx:id="unique_noColumn" prefWidth="98.0" text="Unique No" />
+                <TableColumn fx:id="nameColumn" editable="true" prefWidth="111.0" sortable="true" text="Name*" />
+                 <TableColumn fx:id="addressColumn" editable="true" prefWidth="117.0" text="Address*" />
+                 <TableColumn fx:id="ageColumn" editable="true" prefWidth="46.0" text="Age" />
+                 <TableColumn fx:id="sexColumn" prefWidth="40.0" text="Sex" />
+                 <TableColumn fx:id="complaintsColumn" editable="true" prefWidth="184.0" text="Complaints" />
+                 <TableColumn fx:id="primary_contactColumn" editable="true" prefWidth="142.0" text="Primary Contact*" />
+                 <TableColumn fx:id="alternate_contactColumn" editable="true" prefWidth="164.0" text="Alternate Contact No" />
+                 <TableColumn fx:id="medicationColumn" editable="true" prefWidth="134.0" text="Medication" />
+                  <TableColumn fx:id="lastVisitDateColumn" editable="true" prefWidth="228.0" text="Previous Visit" />
+             </columns>
+            </TableView>
+            <HBox prefHeight="236.0" prefWidth="1102.0">
+               <children>
+                  <VBox prefHeight="236.0" prefWidth="95.0">
+                     <children>
+                        <Label prefHeight="41.0" prefWidth="169.0" text="Unique No:" />
+                        <Label prefHeight="43.0" prefWidth="169.0" text="Name*:">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="43.0" prefWidth="169.0" text="Address*:">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
+                        <Label prefHeight="42.0" prefWidth="169.0" text="Age:" />
+                        <Label prefHeight="49.0" prefWidth="169.0" text="Sex:" />
+                     </children>
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox prefHeight="225.0" prefWidth="195.0">
+                     <children>
+                        <TextField fx:id="txtUniqueNo" editable="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="34.0" prefWidth="195.0">
+                           <opaqueInsets>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </opaqueInsets>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Calibri Light" size="15.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="txtName" editable="false" onKeyReleased="#handleOnChange" prefHeight="34.0" prefWidth="195.0">
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Calibri" size="15.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="txtAddress" editable="false" onKeyReleased="#handleOnChange" prefHeight="34.0" prefWidth="195.0">
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Calibri" size="15.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="txtAge" editable="false" onKeyReleased="#handleOnChange" prefHeight="34.0" prefWidth="195.0">
+                           <VBox.margin>
+                              <Insets bottom="10.0" right="150.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Calibri" size="15.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="txtSex" editable="false" onKeyReleased="#handleOnChange" prefHeight="34.0" prefWidth="61.0">
+                           <VBox.margin>
+                              <Insets right="150.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Calibri" size="15.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox prefHeight="236.0" prefWidth="41.0" />
+                  <VBox prefHeight="236.0" prefWidth="135.0">
+                     <children>
+                        <Label prefHeight="41.0" prefWidth="169.0" text="Complaints:" />
+                        <Label prefHeight="43.0" prefWidth="150.0" text="Primary Contact*:">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
+                        <Label prefHeight="43.0" prefWidth="169.0" text="Alternate Contact:" />
+                        <Label prefHeight="42.0" prefWidth="169.0" text="Medication:" />
+                     </children>
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox prefHeight="225.0" prefWidth="195.0">
+                     <children>
+                        <TextField fx:id="txtComplaints" editable="false" nodeOrientation="LEFT_TO_RIGHT" onKeyReleased="#handleOnChange" prefHeight="34.0" prefWidth="195.0">
+                           <opaqueInsets> 
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </opaqueInsets>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Calibri" size="15.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="txtPrimaryContact" editable="false" onKeyReleased="#handleOnChange" prefHeight="34.0" prefWidth="195.0">
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Calibri" size="15.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="txtAlternateContact" editable="false" onKeyReleased="#handleOnChange" prefHeight="34.0" prefWidth="195.0">
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Calibri" size="15.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="txtMedication" editable="false" onKeyReleased="#handleOnChange" prefHeight="34.0" prefWidth="179.0">
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Calibri" size="15.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="txtPatientId" editable="false" onKeyReleased="#handleOnChange" prefHeight="34.0" prefWidth="179.0">
+                           <font>
+                              <Font name="Calibri" size="15.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox prefHeight="236.0" prefWidth="41.0" />
+                  <VBox prefHeight="236.0" prefWidth="135.0">
+                     <children>
+                        <Label prefHeight="39.0" prefWidth="123.0" text="Previous Visit on:">
+                           <effect>
+                              <Glow />
+                           </effect>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="226.0" prefWidth="151.0">
+                     <children>
+                        <TextField fx:id="txtLastVisitDate" editable="false" nodeOrientation="LEFT_TO_RIGHT" onKeyReleased="#handleOnChange" prefHeight="34.0" prefWidth="120.0">
+                           <opaqueInsets>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </opaqueInsets>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Calibri" size="15.0" />
+                           </font>
+                           <effect>
+                              <Lighting>
+                                 <bumpInput>
+                                    <Shadow />
+                                 </bumpInput>
+                                 <light>
+                                    <Light.Distant />
+                                 </light>
+                              </Lighting>
+                           </effect>
+                        </TextField>
+                     </children>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox prefHeight="129.0" prefWidth="127.0">
+                     <children>
+                        <Button fx:id="btnSave" defaultButton="true" disable="true" mnemonicParsing="false" onAction="#handleUpdate" text="Save">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" top="10.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="btnAddNew" mnemonicParsing="false" onAction="#handleAddNew" text="Add New">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" top="10.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="btnDelete" disable="true" mnemonicParsing="false" onAction="#handleDelete" text="Delete">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" top="10.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                     <opaqueInsets>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </opaqueInsets>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
