@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+/** This class is used to generate the unique no for patients **/
 public class SequenceUtil {
 	
 	private static String getTrailingZeros(Integer seqNo) {
